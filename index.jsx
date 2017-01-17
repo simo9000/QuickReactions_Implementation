@@ -13,7 +13,10 @@ http.createServer(function (req, res) {
               <title>Hello World</title>
             </head>
             <body>
-              index.jsx compiled into index.js by hand on the server
+                index.jsx, automatically processed
+                through gulp and gulp-react, with
+                node automatically restarted
+                through gulp-nodemon
             </body>
           </html>
         )
