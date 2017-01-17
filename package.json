@@ -1,0 +1,11 @@
+{
+  "name": "reacthw",
+  "version": "1.0.0",
+  "description": "react hello world tutorial",
+  "main": "index.js",
+  "scripts": {
+    "test": "run"
+  },
+  "author": "",
+  "license": "ISC"
+}
