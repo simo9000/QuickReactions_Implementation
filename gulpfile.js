@@ -1,6 +1,7 @@
 ﻿var gulp = require('gulp')
   , fs = require('fs')
-  , reactTools = require('react-tools');
+  , reactTools = require('react-tools')
+  , spawn = require('child_process').spawn;
 
 var transform = function (srcFile, destFile, cb) {
   console.log('Reading %s...', srcFile);
@@ -29,6 +30,10 @@ gulp.task('jsx', function (cb) {
   });
 });
 
+gulp.task('node', ['jsx'], function() {
+  spawn('node', ['./lib/index.js'], { stdio: 'inherit' });
+});
+
 gulp.task('default', function () {
-  gulp.start('jsx');
+  gulp.start('node');
 });
