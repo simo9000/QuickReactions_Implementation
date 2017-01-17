@@ -1,23 +1,34 @@
 ﻿var http = require('http')
   , React = require('react')
   , ReactDOMServer = require('react-dom/server')
-  , HelloWorld = require('./Components/HelloWorld');
+  , HelloWorld = require('./Components/HelloWorld')
+  , fs = require('fs');
 
 http.createServer(function (req, res) {
     res.writeHead(200, {
         'Content-Type': 'text/html'
     });
-    res.end(
-        ReactDOMServer.renderToString(
-            <html>
-            <head>
-              <title>Hello World</title>
-            </head>
-            <body>
-                <HelloWorld from="index.js on the server" />
-            </body>
-          </html>
-        )
-    );
+    var body = ReactDOMServer.renderToString(
+        <body>
+            <HelloWorld from="index.jsx on the server" />
+            <div id="reactContainer" />
+        </body>);
+
+    res.end('<html><head><title>Hello World</title>' + 
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>' + 
+            '<script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>' +
+            '<head>' + 
+            '<script>' +
+            fs.readFileSync('./Components/TimeStamp.js') +
+            '</script>' +
+            body +
+            '<script>' +
+            'var timestampInstance = React.createFactory(Timestamp)();' +
+            'setInterval(function() {' +
+            '   ReactDOM.render(timestampInstance, ' + 
+            '       document.getElementById("reactContainer")); }, 500);' +
+            '</script>' +
+            '</html>'
+        );
 }).listen(32456);
 console.log('Server running at port 32456');
