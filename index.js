@@ -1,6 +1,7 @@
-var http = require('http');
-var React = require('react');
-var ReactDOMServer = require('react-dom/server');
+var http = require('http')
+  , React = require('react')
+  , ReactDOMServer = require('react-dom/server')
+  , HelloWorld = require('./Components/HelloWorld');
 
 http.createServer(function (req, res) {
     res.writeHead(200, {

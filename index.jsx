@@ -1,6 +1,7 @@
-﻿var http = require('http');
-var React = require('react');
-var ReactDOMServer = require('react-dom/server');
+﻿var http = require('http')
+  , React = require('react')
+  , ReactDOMServer = require('react-dom/server')
+  , HelloWorld = require('./Components/HelloWorld');
 
 http.createServer(function (req, res) {
     res.writeHead(200, {
@@ -13,10 +14,10 @@ http.createServer(function (req, res) {
               <title>Hello World</title>
             </head>
             <body>
-                index.jsx, automatically processed
-                through gulp and gulp-react, with
-                node automatically restarted
-                through gulp-nodemon
+                <HelloWorld />
+                <div>
+                    Rendered from the server!
+                </div>
             </body>
           </html>
         )
