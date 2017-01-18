@@ -10,8 +10,7 @@ app.use('/Components',
   express.static(path.join(__dirname, 'Components')));
 
 app.use('/assets',
-  express.static(path.join(path.join(__dirname, '..'),
-    'assets')));
+  express.static(path.join(__dirname, 'assets')));
 
 app.get('/', function(req, res){
     res.writeHead(200, {
@@ -21,14 +20,11 @@ app.get('/', function(req, res){
         <html>
             <head>
                 <title>Hello World</title>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
-                <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
-                <script src="/Components/Timestamp.js"></script>
-                <script src="/Components/HelloWorld.js"></script>
             </head>
             <body>
                 <HelloWorld from="index.jsx on the server" />
                 <div id="reactContainer" />
+                <div id="reactHelloContainer"></div>
                 <script src="/assets/index.js"></script>
             </body>
         </html>
