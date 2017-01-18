@@ -24,12 +24,13 @@ app.get('/', function(req, res){
                 <title>Hello World</title>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
-                <script src="/Components/Timestamp.js"></script>
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-standalone/6.21.1/babel.min.js"></script>
+                <script src="/Components/Timestamp.jsx" type="text/jsx"></script>
             </head>
             <body>
                 <HelloWorld from="index.jsx on the server" />
                 <div id="reactContainer" />
-                <script src="/assets/index.js"></script>
+                <script src="/assets/index.js" type="text/jsx"></script>
             </body>
         </html>
     );
