@@ -1,4 +1,5 @@
 var React = require('react')
+  , Layout = require('./Components/Layout')
   , ReactDOMServer = require('react-dom/server')
   , HelloWorld = require('./Components/HelloWorld')
   , express = require('express')
@@ -13,20 +14,13 @@ app.get('/', function(req, res){
     res.writeHead(200, {
         'Content-Type': 'text/html'
     });
-    var html = ReactDOMServer.renderToString(
-        React.createElement("html", null, 
-            React.createElement("head", null, 
-                React.createElement("title", null, "Hello World")
-            ), 
-            React.createElement("body", null, 
-                React.createElement("div", {id: "reactContainer"}), 
-                React.createElement("div", {id: "reactHelloContainer"}, 
-                    React.createElement(HelloWorld, {from: "server.jsx on the server"})
-                ), 
-                React.createElement("script", {src: "/pages/index.js"})
-            )
-        )
+    var content = ReactDOMServer.renderToString(
+        React.createElement(HelloWorld, {from: "server.jsx, running on the server"})
     );
+
+    var html = ReactDOMServer.renderToStaticMarkup(
+        React.createElement(Layout, {content: content})
+        )
     
     res.end(html);
 });

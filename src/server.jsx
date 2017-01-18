@@ -1,4 +1,5 @@
 ﻿var React = require('react')
+  , Layout = require('./Components/Layout')
   , ReactDOMServer = require('react-dom/server')
   , HelloWorld = require('./Components/HelloWorld')
   , express = require('express')
@@ -13,20 +14,13 @@ app.get('/', function(req, res){
     res.writeHead(200, {
         'Content-Type': 'text/html'
     });
-    var html = ReactDOMServer.renderToString(
-        <html>
-            <head>
-                <title>Hello World</title>
-            </head>
-            <body>
-                <div id="reactContainer" />
-                <div id="reactHelloContainer">
-                    <HelloWorld from="server.jsx on the server" />
-                </div>
-                <script src="/pages/index.js"></script>
-            </body>
-        </html>
+    var content = ReactDOMServer.renderToString(
+        <HelloWorld from="server.jsx, running on the server" />
     );
+
+    var html = ReactDOMServer.renderToStaticMarkup(
+        <Layout content={content} />
+        )
     
     res.end(html);
 });
