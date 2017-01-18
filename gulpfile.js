@@ -5,27 +5,29 @@
   , source = require('vinyl-source-stream')
   , browserify = require('browserify');
 
-gulp.task('watch-jsx', ['client-scripts'], function () {
-  gulpWatch(['**/*.jsx', 'assets/*.js'], { ignored: 'lib/' }, function () {
-    gulp.start('jsx');
+gulp.task('watch-jsx', ['build'], function () {
+  gulpWatch('src/**/*.jsx', { ignored: 'bin/' }, function () {
+    gulp.start('build');
   });
 });
 
 gulp.task('jsx', function () {
-  return gulp.src('**/*.jsx')
+  return gulp.src('src/**/*.jsx')
              .pipe(gulpReact())
-             .pipe(gulp.dest('lib'));
+             .pipe(gulp.dest('bin'));
 });
 
+gulp.task('build', ['client-scripts']);
+
 gulp.task('client-scripts', ['jsx'], function () {
-  return browserify('./assets/index.js').bundle()
+  return browserify('./bin/Pages/index.js').bundle()
     .pipe(source('index.js'))
-    .pipe(gulp.dest('lib/assets'));
+    .pipe(gulp.dest('bin/Pages'));
 });
 
 gulp.task('node', ['client-scripts','watch-jsx'], function () {
   gulpNodemon({
-    script: 'lib/index.js',
+    script: 'bin/server.js',
     ignore: ['gulpFile.js'],
     ext: 'js jsx'
   });

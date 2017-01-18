@@ -6,11 +6,8 @@
 
 var app = express();
 
-app.use('/Components',
-  express.static(path.join(__dirname, 'Components')));
-
-app.use('/assets',
-  express.static(path.join(__dirname, 'assets')));
+app.use('/Pages',
+  express.static(path.join(__dirname, 'Pages')));
 
 app.get('/', function(req, res){
     res.writeHead(200, {
@@ -22,10 +19,10 @@ app.get('/', function(req, res){
                 <title>Hello World</title>
             </head>
             <body>
-                <HelloWorld from="index.jsx on the server" />
+                <HelloWorld from="server.jsx on the server" />
                 <div id="reactContainer" />
                 <div id="reactHelloContainer"></div>
-                <script src="/assets/index.js"></script>
+                <script src="/pages/index.js"></script>
             </body>
         </html>
     );

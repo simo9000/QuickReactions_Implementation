@@ -1,25 +1,5 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 var React = require('react');
-var ReactDOM = require('react-dom');
-var Timestamp = require('../lib/Components/Timestamp');
-var HelloWorld = require('../lib/Components/HelloWorld');
-
-var timestampInstance = React.createFactory(Timestamp)();
-
-var timestampElement = ReactDOM.render(timestampInstance,
-  document.getElementById('reactContainer'));
-
-setInterval(function () {
-  timestampElement.setState({
-    date: 'Updated through setState: ' + new Date().toString() 
-  });
-}, 500)
-
-var helloInstance = React.createFactory(HelloWorld)({ from: "From the client" });
-var helloElement = ReactDOM.render(helloInstance,
-  document.getElementById("reactHelloContainer"));
-},{"../lib/Components/HelloWorld":2,"../lib/Components/Timestamp":3,"react":180,"react-dom":29}],2:[function(require,module,exports){
-var React = require('react');
 
 module.exports = React.createClass({displayName: "exports",
     getInitialState: function () {
@@ -39,7 +19,7 @@ module.exports = React.createClass({displayName: "exports",
         );
     }
 });
-},{"react":180}],3:[function(require,module,exports){
+},{"react":180}],2:[function(require,module,exports){
 var React = require('react');
 
 module.exports = React.createClass({displayName: "exports",
@@ -52,7 +32,27 @@ module.exports = React.createClass({displayName: "exports",
       );
   }
 });
-},{"react":180}],4:[function(require,module,exports){
+},{"react":180}],3:[function(require,module,exports){
+var React = require('react');
+var ReactDOM = require('react-dom');
+var Timestamp = require('../Components/Timestamp');
+var HelloWorld = require('../Components/HelloWorld');
+
+var timestampInstance = React.createFactory(Timestamp)();
+
+var timestampElement = ReactDOM.render(timestampInstance,
+  document.getElementById('reactContainer'));
+
+setInterval(function () {
+  timestampElement.setState({
+    date: 'Updated through setState: ' + new Date().toString() 
+  });
+}, 500)
+
+var helloInstance = React.createFactory(HelloWorld)({ from: "index.jsx, transformed and running on the client" });
+var helloElement = ReactDOM.render(helloInstance,
+  document.getElementById("reactHelloContainer"));
+},{"../Components/HelloWorld":1,"../Components/Timestamp":2,"react":180,"react-dom":29}],4:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -20540,4 +20540,4 @@ module.exports = traverseAllChildren;
 
 module.exports = require('./lib/React');
 
-},{"./lib/React":158}]},{},[1]);
+},{"./lib/React":158}]},{},[3]);
