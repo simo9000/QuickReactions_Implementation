@@ -19,9 +19,10 @@ app.get('/', function(req, res){
                 React.createElement("title", null, "Hello World")
             ), 
             React.createElement("body", null, 
-                React.createElement(HelloWorld, {from: "server.jsx on the server"}), 
                 React.createElement("div", {id: "reactContainer"}), 
-                React.createElement("div", {id: "reactHelloContainer"}), 
+                React.createElement("div", {id: "reactHelloContainer"}, 
+                    React.createElement(HelloWorld, {from: "server.jsx on the server"})
+                ), 
                 React.createElement("script", {src: "/pages/index.js"})
             )
         )

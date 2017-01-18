@@ -19,9 +19,10 @@ app.get('/', function(req, res){
                 <title>Hello World</title>
             </head>
             <body>
-                <HelloWorld from="server.jsx on the server" />
                 <div id="reactContainer" />
-                <div id="reactHelloContainer"></div>
+                <div id="reactHelloContainer">
+                    <HelloWorld from="server.jsx on the server" />
+                </div>
                 <script src="/pages/index.js"></script>
             </body>
         </html>
