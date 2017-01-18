@@ -3,9 +3,13 @@ var ReactDOM = require('react-dom');
 var Timestamp = require('../Components/Timestamp');
 var HelloWorld = require('../Components/HelloWorld');
 
-var timestampInstance = React.createFactory(Timestamp)();
+ReactDOM.render(
+    <HelloWorld from="index.jsx, transformed, bundled,
+        and running on the client" />,
+  document.getElementById("reactHelloContainer"));
 
-var timestampElement = ReactDOM.render(timestampInstance,
+var timestampElement = ReactDOM.render(
+    <Timestamp />,
   document.getElementById('reactContainer'));
 
 setInterval(function () {
@@ -13,7 +17,3 @@ setInterval(function () {
     date: 'Updated through setState: ' + new Date().toString() 
   });
 }, 500)
-
-var helloInstance = React.createFactory(HelloWorld)({ from: "index.jsx, transformed and running on the client" });
-var helloElement = ReactDOM.render(helloInstance,
-  document.getElementById("reactHelloContainer"));
