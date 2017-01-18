@@ -24,6 +24,7 @@ app.get('/', function(req, res){
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react.js"></script>
                 <script src="https://cdnjs.cloudflare.com/ajax/libs/react/15.4.2/react-dom.js"></script>
                 <script src="/Components/Timestamp.js"></script>
+                <script src="/Components/HelloWorld.js"></script>
             </head>
             <body>
                 <HelloWorld from="index.jsx on the server" />
